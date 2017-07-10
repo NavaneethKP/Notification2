@@ -39,7 +39,25 @@ public class MainActivity extends AppCompatActivity {
 
         builder.setContentIntent(pi);
 
+        //Intent for settings action button
+        Intent j = new Intent(this,settings.class);
+        android.support.v4.app.TaskStackBuilder stackBuilder_settings = android.support.v4.app.TaskStackBuilder.create(this);
+        stackBuilder_settings.addParentStack(settings.class);
+        stackBuilder_settings.addNextIntent(j);
+        PendingIntent pi_settings=stackBuilder_settings.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
 
+        //Intent for settings help button
+        Intent k = new Intent(this,settings.class);
+        android.support.v4.app.TaskStackBuilder stackBuilder_help = android.support.v4.app.TaskStackBuilder.create(this);
+        stackBuilder_help.addParentStack(help.class);
+        stackBuilder_help.addNextIntent(k);
+        PendingIntent pi_help=stackBuilder_help.getPendingIntent(0,PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        builder.addAction(R.drawable.settings,"Settings",pi_settings);
+        builder.addAction(R.drawable.help,"Help",pi_help);
+
+        //To issue notifications
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         manager.notify(123,builder.build());
 

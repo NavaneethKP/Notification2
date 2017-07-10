@@ -26,8 +26,27 @@
                 />
 
             </activity>
-        <activity android:name=".settings" />
-        <activity android:name=".help"></activity>
+        <activity
+            android:name=".settings"
+            android:parentActivityName=".MainActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                />
+
+        </activity>
+        <activity
+            android:name=".help"
+            android:parentActivityName=".MainActivity">
+
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"
+                />
+
+
+        </activity>
     </application>
 
 </manifest>
